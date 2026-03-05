@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Projects | Hafsa Housni</title>
+
+<link rel="stylesheet" href="style.css">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+</head>
+
+<body>
+
+<div class="curtain"></div>
+
+<section class="projects-page">
+
+<div class="side-icons">
+
+<a href="index.html" class="icon link-transition">
+<i class="fas fa-home"></i>
+<span>HOME</span>
+</a>
+
+<a href="about.html" class="icon link-transition">
+<i class="fas fa-user"></i>
+<span>ABOUT</span>
+</a>
+
+<a href="projects.html" class="icon">
+<i class="fas fa-briefcase"></i>
+<span>PROJECTS</span>
+</a>
+
+<a href="contact.html" class="icon link-transition">
+<i class="fas fa-envelope"></i>
+<span>CONTACT</span>
+</a>
+
+</div>
+
+<div class="projects-container">
+
+<h1 class="projects-title">
+MY <span>PROJECTS</span>
+</h1>
+
+<div class="projects-grid">
+
+<!-- PROJECT 1 -->
+<a href="https://github.com/HafsaHousni/Restaurant-Reservation-App"
+target="_blank"
+class="project-card">
+
+<div class="project-overlay">
+<h3>Event & Reservation App</h3>
+<p>Laravel | MySQL</p>
+</div>
+
+</a>
+
+<!-- PROJECT 2 -->
+<a href="https://github.com/HafsaHousni/Restaurant-Reservation-App"
+target="_blank"
+class="project-card">
+
+<div class="project-overlay">
+<h3>Restaurant Reservation App</h3>
+<p>React | TypeScript | MongoDB</p>
+</div>
+
+</a>
+
+<!-- PROJECT 3 -->
+<a href="https://github.com/HafsaHousni/gestion_photos_django"
+target="_blank"
+class="project-card">
+
+<div class="project-overlay">
+<h3>Photo Management App</h3>
+<p>Django | Python</p>
+</div>
+
+</a>
+
+<!-- PROJECT 4 -->
+<a href="https://github.com/HafsaHousni/Plagiarism-Paraphrase-Detection"
+target="_blank"
+class="project-card">
+
+<div class="project-overlay">
+<h3>Plagiarism Detection</h3>
+<p>Python | NLP</p>
+</div>
+
+</a>
+
+<!-- PROJECT 5 -->
+<a href="https://github.com/HafsaHousni/car_maching_learning_IA"
+target="_blank"
+class="project-card">
+
+<div class="project-overlay">
+<h3>Car Price Prediction</h3>
+<p>Machine Learning</p>
+</div>
+
+</a>
+
+<!-- PROJECT 6 -->
+<a href="https://github.com/HafsaHousni/parapharmacie-"
+target="_blank"
+class="project-card">
+
+<div class="project-overlay">
+<h3>Parapharmacy App</h3>
+<p>C# | .NET</p>
+</div>
+
+</a>
+
+<!-- PROJECT 7 -->
+<a href="https://github.com/HafsaHousni/Device-Repair-App"
+target="_blank"
+class="project-card">
+
+<div class="project-overlay">
+<h3>Device Repair App</h3>
+<p>JAVA</p>
+</div>
+
+</a>
+
+<!-- PROJECT 8 -->
+<a href="https://github.com/HafsaHousni"
+target="_blank"
+class="project-card">
+
+<div class="project-overlay">
+<h3>Image Detection AI</h3>
+<p>Django | Machine Learning</p>
+</div>
+
+</a>
+
+</div>
+</div>
+
+</section>
+
+<script>
+
+document.addEventListener("DOMContentLoaded",function(){
+
+const curtain=document.querySelector(".curtain")
+
+const links=document.querySelectorAll(".link-transition")
+
+links.forEach(link=>{
+
+link.addEventListener("click",function(e){
+
+e.preventDefault()
+
+const target=this.href
+
+curtain.classList.add("active")
+
+setTimeout(()=>{
+
+window.location.href=target
+
+},700)
+
+})
+
+})
+
+})
+
+</script>
+
+</body>
+</html>

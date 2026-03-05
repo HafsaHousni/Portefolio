@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hafsa Housni | Portfolio</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+
+<!-- RIDEAU -->
+<div class="curtain"></div>
+
+<section class="hero">
+
+    <!-- SIDE ICONS -->
+    <div class="side-icons">
+
+        <a href="index.html" class="icon">
+            <i class="fas fa-home"></i>
+            <span>HOME</span>
+        </a>
+
+        <a href="about.html" class="icon link-transition">
+            <i class="fas fa-user"></i>
+            <span>ABOUT</span>
+        </a>
+
+        <a href="projects.html" class="icon">
+            <i class="fas fa-briefcase"></i>
+            <span>PROJECTS</span>
+        </a>
+
+        <a href="contact.html" class="icon">
+            <i class="fas fa-envelope"></i>
+            <span>CONTACT</span>
+        </a>
+
+    </div>
+
+    <div class="hero-container">
+
+        <div class="hero-image">
+            <img src="image.png" alt="Hafsa Housni">
+        </div>
+
+        <div class="hero-content">
+            <h1>I'M HAFSA HOUSNI.</h1>
+            <h2>AI & Data Engineering Student</h2>
+
+            <p>
+                Passionnée par l'intelligence artificielle et la science des données,
+                je développe des solutions intelligentes et innovantes.
+            </p>
+
+            <a href="about.html" class="btn link-transition">
+                MORE ABOUT ME →
+            </a>
+        </div>
+
+    </div>
+
+</section>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const curtain = document.querySelector(".curtain");
+
+    const links = document.querySelectorAll("a");
+
+    links.forEach(link => {
+
+        link.addEventListener("click", function (e) {
+
+            const target = this.getAttribute("href");
+
+            // Ignore liens externes (http, https, whatsapp, # etc.)
+            if (
+                target &&
+                !target.startsWith("http") &&
+                !target.startsWith("#") &&
+                !this.hasAttribute("target")
+            ) {
+
+                e.preventDefault();
+
+                curtain.classList.add("active");
+
+                setTimeout(() => {
+                    window.location.href = target;
+                }, 700);
+            }
+
+        });
+
+    });
+
+});
+</script>
+
+</body>
+</html>

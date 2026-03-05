@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact | Hafsa Housni</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+
+<div class="curtain"></div>
+
+<section class="contact-page">
+
+    <!-- SIDE ICONS -->
+    <div class="side-icons">
+
+        <a href="index.html" class="icon">
+            <i class="fas fa-home"></i>
+            <span>HOME</span>
+        </a>
+
+        <a href="about.html" class="icon">
+            <i class="fas fa-user"></i>
+            <span>ABOUT</span>
+        </a>
+                <a href="projects.html" class="icon">
+            <i class="fas fa-briefcase"></i>
+            <span>PROJECTS</span>
+        </a>
+
+        <a href="contact.html" class="icon">
+            <i class="fas fa-envelope"></i>
+            <span>CONTACT</span>
+        </a>
+
+    </div>
+
+    <div class="contact-container">
+
+        <h1 class="contact-title">
+            GET IN <span>TOUCH</span>
+        </h1>
+
+        <h3>DON'T BE SHY !</h3>
+
+        <p>
+            Feel free to contact me for collaboration, internships,
+            AI & Data projects or innovative ideas.
+        </p>
+
+        <!-- EMAIL BOX -->
+        <div class="phone-box">
+            <i class="fas fa-envelope"></i>
+            <p>EMAIL ME<br><strong>housnihafsa5@gmail.com</strong></p>
+        </div>
+
+        <!-- EMAIL BUTTON -->
+        <a href="mailto:housnihafsa5@gmail.com?subject=Contact%20from%20Portfolio&body=Bonjour%20Hafsa,%20je%20souhaite%20vous%20contacter%20concernant..."
+           class="send-btn">
+
+            SEND MESSAGE <i class="fas fa-paper-plane"></i>
+        </a>
+
+        <!-- SOCIAL ICONS -->
+        <div class="social-icons">
+
+            <!-- LinkedIn -->
+            <a href="https://www.linkedin.com/in/hafsa-housni" target="_blank">
+                <i class="fab fa-linkedin-in"></i>
+            </a>
+
+            <!-- GitHub -->
+            <a href="https://github.com/HafsaHousni" target="_blank">
+                <i class="fab fa-github"></i>
+            </a>
+
+            <!-- X / Twitter -->
+            <a href="https://twitter.com/HafsaHousni" target="_blank">
+                <i class="fab fa-x-twitter"></i>
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const curtain = document.querySelector(".curtain");
+    const links = document.querySelectorAll("a");
+
+    links.forEach(link => {
+
+        link.addEventListener("click", function (e) {
+
+            const target = this.getAttribute("href");
+
+            if (
+                target &&
+                !target.startsWith("http") &&
+                !target.startsWith("mailto") &&
+                !target.startsWith("#") &&
+                !this.hasAttribute("target")
+            ) {
+                e.preventDefault();
+
+                curtain.classList.add("active");
+
+                setTimeout(() => {
+                    window.location.href = target;
+                }, 700);
+            }
+
+        });
+
+    });
+
+});
+</script>
+
+</body>
+</html>
