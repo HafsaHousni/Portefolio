@@ -4,7 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>About | Hafsa Housni</title>
+<script>
+    const targetHash = window.location.hash || '#experience';
+    window.location.replace('index.html' + targetHash);
+</script>
 <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="chatbot.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 
@@ -12,25 +17,47 @@
 
 <div class="curtain"></div>
 
-<section class="about-page">
+<!-- TOP NAVBAR (Style Iyad Hadife) -->
+<header class="top-navbar">
+    <a href="index.html" class="nav-brand">Hafsa<span>.IA</span></a>
+    <nav class="nav-links">
+        <a href="index.html" class="nav-link link-transition"><i class="fas fa-home"></i> Accueil</a>
+        <a href="about.html#experience" class="nav-link"><i class="fas fa-briefcase"></i> Expérience</a>
+        <a href="about.html#education" class="nav-link"><i class="fas fa-graduation-cap"></i> Formation</a>
+        <a href="about.html#skills" class="nav-link"><i class="fas fa-code"></i> Compétences</a>
+        <a href="projects.html" class="nav-link link-transition"><i class="fas fa-project-diagram"></i> Projets</a>
+        <a href="contact.html" class="nav-link link-transition"><i class="fas fa-envelope"></i> Contact</a>
+    </nav>
+    <a href="Hafsa_Housni_CV.pdf" download class="nav-cv-btn">
+        <i class="fas fa-download"></i> CV
+    </a>
+</header>
 
+<section class="about-page" id="about">
+
+    <!-- FLOATING SIDE ICONS -->
     <div class="side-icons">
-        <a href="index.html" class="icon link-transition">
+        <a href="index.html" class="icon link-transition" title="Accueil">
             <i class="fas fa-home"></i>
-            <span>HOME</span>
+            <span>ACCUEIL</span>
         </a>
-
-        <a href="about.html" class="icon">
-            <i class="fas fa-user"></i>
-            <span>ABOUT</span>
-        </a>
-
-        <a href="projects.html" class="icon">
+        <a href="#experience" class="icon" title="Expérience">
             <i class="fas fa-briefcase"></i>
-            <span>PROJECTS</span>
+            <span>EXPÉRIENCE</span>
         </a>
-
-        <a href="contact.html" class="icon">
+        <a href="#education" class="icon" title="Formation">
+            <i class="fas fa-graduation-cap"></i>
+            <span>FORMATION</span>
+        </a>
+        <a href="#skills" class="icon" title="Compétences">
+            <i class="fas fa-code"></i>
+            <span>COMPÉTENCES</span>
+        </a>
+        <a href="projects.html" class="icon link-transition" title="Projets">
+            <i class="fas fa-folder-open"></i>
+            <span>PROJETS</span>
+        </a>
+        <a href="contact.html" class="icon link-transition" title="Contact">
             <i class="fas fa-envelope"></i>
             <span>CONTACT</span>
         </a>
@@ -38,197 +65,390 @@
 
     <div class="about-container">
 
-        <h1 class="about-title">
-            ABOUT <span>HAFSA</span>
-        </h1>
+        <!-- PROFILE HEADER (Style Iyad Hadife) -->
+        <div class="profile-header-iyad">
+            <div class="profile-image-container">
+                <img src="c.jpg" alt="Hafsa Housni" class="profile-image">
+            </div>
+            <div class="profile-info-block">
+                <div class="status-badge"><i class="fas fa-circle" style="color:#00e676;font-size:8px;"></i> Disponible pour PFE / Stage &amp; Opportunités</div>
+                <h1 class="profile-name">HAFSA <span class="gradient-text">HOUSNI</span></h1>
+                <p class="profile-tagline">Future Ingénieure en Intelligence Artificielle &amp; Data Science | EMSI Rabat</p>
+                <p class="profile-bio-text">
+                    Passionnée par l'innovation technologique, je combine de solides compétences théoriques et pratiques en 
+                    <strong>Machine Learning</strong>, <strong>Deep Learning (Vision &amp; NLP)</strong>, <strong>Architectures Multi-Agents (LangGraph)</strong>, 
+                    et <strong>Ingénierie de données (Airflow, ETL, Power BI)</strong>. Forte d'une double compétence technique (Cycle Ingénieur &amp; Dév. Full Stack) 
+                    et managériale (Licence en Économie-Gestion), je conçois des solutions data-driven orientées métier.
+                </p>
+                <div class="profile-actions-row">
+                    <a href="Hafsa_Housni_CV.pdf" download class="btn btn-primary">
+                        <i class="fas fa-download"></i> TÉLÉCHARGER MON CV
+                    </a>
+                    <a href="contact.html" class="btn btn-secondary link-transition">
+                        <i class="fas fa-envelope"></i> ME CONTACTER
+                    </a>
+                </div>
+            </div>
+        </div>
 
-        <!-- PERSONAL INFO -->
-        <div class="about-top">
+        <!-- STATS COUNTERS -->
+        <div class="stats-grid-iyad">
+            <div class="stat-card">
+                <h3>10+</h3>
+                <p>CERTIFICATIONS RECONNUES</p>
+            </div>
+            <div class="stat-card">
+                <h3>4</h3>
+                <p>EXPÉRIENCES &amp; STAGES RÉELS</p>
+            </div>
+            <div class="stat-card">
+                <h3>12+</h3>
+                <p>PROJETS IA &amp; DATA DÉPLOYÉS</p>
+            </div>
+            <div class="stat-card">
+                <h3>100%</h3>
+                <p>ENGAGEMENT &amp; RIGUEUR</p>
+            </div>
+        </div>
 
-            <div class="personal-info">
-                <h3>PERSONAL INFOS</h3>
-                <p><strong>Full Name :</strong> Hafsa Housni</p>
-                <p><strong>Field :</strong> AI & Data Engineering</p>
-                <p><strong>Current Level :</strong> Engineering Cycle – EMSI</p>
-                <p><strong>Nationality :</strong> Moroccan</p>
+        <!-- ========================================================
+             COMPÉTENCES (Style Iyad Hadife - Pills & Categories)
+             ======================================================== -->
+        <div class="section-title-wrapper" id="skills">
+            <h2>COMPÉTENCES <span>TECHNIQUES</span></h2>
+        </div>
 
-<a href="Hafsa_Housni_CV.pdf" download class="download-btn">
-DOWNLOAD CV <i class="fas fa-download"></i>
-</a>
+        <div class="skills-categories-grid">
+
+            <!-- Catégorie 1 : IA & Deep Learning -->
+            <div class="skill-category-card" id="ia-section">
+                <div class="category-header">
+                    <div class="category-icon-title">
+                        <i class="fas fa-brain category-icon"></i>
+                        <h3>Intelligence Artificielle &amp; Deep Learning</h3>
+                    </div>
+                    <span class="category-tag tag-ia">IA</span>
+                </div>
+                <div class="pills-container">
+                    <span class="skill-pill">Python (Expert)</span>
+                    <span class="skill-pill">Machine Learning</span>
+                    <span class="skill-pill">Deep Learning (CNN)</span>
+                    <span class="skill-pill">TensorFlow / Keras</span>
+                    <span class="skill-pill">Computer Vision (YOLO, OpenCV)</span>
+                    <span class="skill-pill">Scikit-learn</span>
+                    <span class="skill-pill">AlexNet &amp; ResNet</span>
+                    <span class="skill-pill">Classification &amp; Régression</span>
+                </div>
             </div>
 
-            <div class="stats">
-                <div class="stat-box">
-                    <h2>6+</h2>
-                    <p>CERTIFICATIONS</p>
+            <!-- Catégorie 2 : IA Générative, Agents & NLP -->
+            <div class="skill-category-card">
+                <div class="category-header">
+                    <div class="category-icon-title">
+                        <i class="fas fa-robot category-icon"></i>
+                        <h3>IA Générative, Systèmes Agents &amp; NLP</h3>
+                    </div>
+                    <span class="category-tag tag-ia">GenAI</span>
                 </div>
-
-                <div class="stat-box">
-                    <h2>3+</h2>
-                    <p>INTERNSHIPS</p>
+                <div class="pills-container">
+                    <span class="skill-pill">LLM &amp; Prompt Engineering</span>
+                    <span class="skill-pill">RAG (Retrieval-Augmented Gen)</span>
+                    <span class="skill-pill">Systèmes Multi-Agents (LangGraph)</span>
+                    <span class="skill-pill">LangChain</span>
+                    <span class="skill-pill">OpenClaw (7 agents déployés)</span>
+                    <span class="skill-pill">Google Gemini AI</span>
+                    <span class="skill-pill">ChromaDB &amp; FAISS</span>
+                    <span class="skill-pill">BERT &amp; NLP (TF-IDF)</span>
                 </div>
+            </div>
 
-                <div class="stat-box">
-                    <h2>10+</h2>
-                    <p>TECH PROJECTS</p>
+            <!-- Catégorie 3 : Data Science & BI -->
+            <div class="skill-category-card" id="data-section">
+                <div class="category-header">
+                    <div class="category-icon-title">
+                        <i class="fas fa-chart-line category-icon"></i>
+                        <h3>Data Science, Pipelines ETL &amp; BI</h3>
+                    </div>
+                    <span class="category-tag tag-data">DATA</span>
                 </div>
+                <div class="pills-container">
+                    <span class="skill-pill">Apache Airflow</span>
+                    <span class="skill-pill">Architecture Médaillon (Bronze/Silver/Gold)</span>
+                    <span class="skill-pill">Docker &amp; Compose</span>
+                    <span class="skill-pill">Power BI (Dashboards interactifs)</span>
+                    <span class="skill-pill">Pandas &amp; NumPy</span>
+                    <span class="skill-pill">Analyse Exploratoire (EDA)</span>
+                    <span class="skill-pill">Feature Engineering</span>
+                    <span class="skill-pill">Suivi des KPI Métier</span>
+                </div>
+            </div>
 
-                <div class="stat-box">
-                    <h2>100%</h2>
-                    <p>COMMITMENT</p>
+            <!-- Catégorie 4 : Développement & Bases de Données -->
+            <div class="skill-category-card">
+                <div class="category-header">
+                    <div class="category-icon-title">
+                        <i class="fas fa-code category-icon"></i>
+                        <h3>Développement Full Stack &amp; Données</h3>
+                    </div>
+                    <span class="category-tag tag-data">DEV</span>
+                </div>
+                <div class="pills-container">
+                    <span class="skill-pill">Django &amp; Flask</span>
+                    <span class="skill-pill">APIs REST</span>
+                    <span class="skill-pill">SQL (MySQL)</span>
+                    <span class="skill-pill">NoSQL (MongoDB)</span>
+                    <span class="skill-pill">React &amp; JavaScript</span>
+                    <span class="skill-pill">Laravel &amp; PHP</span>
+                    <span class="skill-pill">Git / GitHub</span>
+                    <span class="skill-pill">Webhooks &amp; WhatsApp API</span>
                 </div>
             </div>
 
         </div>
 
-        <h2 class="section-title">MY SKILLS</h2>
+        <!-- ========================================================
+             EXPÉRIENCE PROFESSIONNELLE (Frise Moderne Style Iyad Hadife)
+             ======================================================== -->
+        <div class="section-title-wrapper" id="experience" style="margin-top: 70px;">
+            <h2>EXPÉRIENCE <span>PROFESSIONNELLE</span></h2>
+        </div>
 
-<div class="skills-grid">
+        <div class="timeline-frise">
 
-    <div class="skill">
-        <div class="circle"><span>90%</span></div>
-        <p>PYTHON</p>
-    </div>
-
-    <div class="skill">
-        <div class="circle"><span>85%</span></div>
-        <p>DJANGO / MVT</p>
-    </div>
-
-    <div class="skill">
-        <div class="circle"><span>88%</span></div>
-        <p>MACHINE LEARNING</p>
-    </div>
-
-    <div class="skill">
-        <div class="circle"><span>80%</span></div>
-        <p>DEEP LEARNING</p>
-    </div>
-
-    <div class="skill">
-        <div class="circle"><span>85%</span></div>
-        <p>REACT & TYPESCRIPT</p>
-    </div>
-
-    <div class="skill">
-        <div class="circle"><span>82%</span></div>
-        <p>LARAVEL</p>
-    </div>
-
-    <div class="skill">
-        <div class="circle"><span>88%</span></div>
-        <p>MONGODB</p>
-    </div>
-
-    <div class="skill">
-        <div class="circle"><span>85%</span></div>
-        <p>MYSQL</p>
-    </div>
-
-    <div class="skill">
-        <div class="circle"><span>75%</span></div>
-        <p>DATA ANALYSIS</p>
-    </div>
-
-    <div class="skill">
-        <div class="circle"><span>80%</span></div>
-        <p>API INTEGRATION</p>
-    </div>
-
-    <div class="skill">
-        <div class="circle"><span>78%</span></div>
-        <p>UML & SYSTEM DESIGN</p>
-    </div>
-
-    <div class="skill">
-        <div class="circle"><span>90%</span></div>
-        <p>PROBLEM SOLVING</p>
-    </div>
-
-</div>
-
-        <!-- EXPERIENCE -->
-        <h2 class="section-title">EXPERIENCE</h2>
-
-        <div class="timeline">
-
-            <div class="timeline-item">
-                <span class="year">2025</span>
-                <h4>Ingénieur en informatique – GO & DEV (Stage)</h4>
-                <p>Rabat | 3 mois – Développement et participation à des projets techniques.</p>
+            <!-- EXPÉRIENCE 1 -->
+            <div class="timeline-frise-item">
+                <div class="timeline-frise-dot"></div>
+                <div class="timeline-item-header">
+                    <div>
+                        <span class="status-badge" style="background:rgba(214,164,180,0.15);color:var(--primary);">STAGE PFA</span>
+                        <h4>Ingénieure en Intelligence Artificielle &amp; Data Science</h4>
+                        <span class="company-name"><i class="fas fa-building"></i> Consult IT &bull; Rabat</span>
+                    </div>
+                    <span class="timeline-date-badge"><i class="far fa-calendar-alt"></i> Juillet 2026 – Août 2026</span>
+                </div>
+                <p>Stage de fin d'année d'ingénieur centré sur l'automatisation intelligente et l'intégration de systèmes agentiques :</p>
+                <ul class="timeline-details-list">
+                    <li><strong>Conception et déploiement de 7 agents d'automatisation</strong> sur la plateforme OpenClaw pour orchestrer des workflows complexes.</li>
+                    <li><strong>Traitement et classification automatisés</strong> des courriers administratifs entrants avec synchronisation directe au CRM Jupiter.</li>
+                    <li><strong>Intégration d'APIs REST</strong> et développement de notifications événementielles en temps réel via Webhooks et WhatsApp Business API.</li>
+                    <li><strong>Sécurisation et robustesse :</strong> déduplication intelligente des requêtes, gestion des sessions concurrentes et monitoring d'erreurs.</li>
+                </ul>
+                <div class="tech-stack" style="margin-top: 15px;">
+                    <span class="tech-pill">OpenClaw</span>
+                    <span class="tech-pill">Agents IA</span>
+                    <span class="tech-pill">CRM Jupiter</span>
+                    <span class="tech-pill">APIs REST</span>
+                    <span class="tech-pill">WhatsApp API</span>
+                    <span class="tech-pill">Python</span>
+                </div>
             </div>
 
-            <div class="timeline-item">
-                <span class="year">2024</span>
-                <h4>Technicienne spécialisée – GO & DEV (Stage)</h4>
-                <p>Développement digital et participation aux projets logiciels.</p>
+            <!-- EXPÉRIENCE 2 -->
+            <div class="timeline-frise-item">
+                <div class="timeline-frise-dot"></div>
+                <div class="timeline-item-header">
+                    <div>
+                        <span class="status-badge" style="background:rgba(180,151,189,0.15);color:var(--secondary);">STAGE INGÉNIERIE</span>
+                        <h4>Stage en ingénierie de développement en IIR</h4>
+                        <span class="company-name"><i class="fas fa-building"></i> GO&amp;DEV &bull; Rabat</span>
+                    </div>
+                    <span class="timeline-date-badge"><i class="far fa-calendar-alt"></i> Juin 2025 – Août 2025 (3 mois)</span>
+                </div>
+                <ul class="timeline-details-list">
+                    <li>Conception et développement complet d'une application de gestion des Ressources Humaines (RH).</li>
+                    <li>Architecture backend sous Python Django avec base relationnelle MySQL optimisée.</li>
+                    <li>Création d'interfaces web ergonomiques et mise en place d'un système sécurisé d'authentification et de gestion des rôles (RBAC).</li>
+                </ul>
+                <div class="tech-stack" style="margin-top: 15px;">
+                    <span class="tech-pill">Django</span>
+                    <span class="tech-pill">Python</span>
+                    <span class="tech-pill">MySQL</span>
+                    <span class="tech-pill">Auth RBAC</span>
+                </div>
             </div>
 
-            <div class="timeline-item">
-                <span class="year">2023</span>
-                <h4>Contrôleur de gestion – AXA (Stage)</h4>
-                <p>Analyse et gestion des données financières.</p>
+            <!-- EXPÉRIENCE 3 -->
+            <div class="timeline-frise-item">
+                <div class="timeline-frise-dot"></div>
+                <div class="timeline-item-header">
+                    <div>
+                        <span class="status-badge">STAGE TECHNIQUE</span>
+                        <h4>Technicienne spécialisée en développement</h4>
+                        <span class="company-name"><i class="fas fa-building"></i> GO&amp;DEV &bull; Rabat</span>
+                    </div>
+                    <span class="timeline-date-badge"><i class="far fa-calendar-alt"></i> Avril 2024 – Mai 2024 (2 mois)</span>
+                </div>
+                <ul class="timeline-details-list">
+                    <li>Conception et développement d'une extension web d'extraction automatique d'informations à partir de sites web ciblés (Web Scraping).</li>
+                    <li>Analyse des besoins et modélisation technique UML (diagrammes de cas d'utilisation, séquence, classes).</li>
+                    <li>Développement avec HTML, CSS, JavaScript, PHP et Laravel.</li>
+                </ul>
+                <div class="tech-stack" style="margin-top: 15px;">
+                    <span class="tech-pill">Laravel</span>
+                    <span class="tech-pill">PHP</span>
+                    <span class="tech-pill">Web Scraping</span>
+                    <span class="tech-pill">UML</span>
+                </div>
+            </div>
+
+            <!-- EXPÉRIENCE 4 -->
+            <div class="timeline-frise-item">
+                <div class="timeline-frise-dot"></div>
+                <div class="timeline-item-header">
+                    <div>
+                        <span class="status-badge">STAGE GESTION</span>
+                        <h4>Contrôleur de gestion — Stagiaire</h4>
+                        <span class="company-name"><i class="fas fa-building"></i> AXA Assurance &bull; Rabat</span>
+                    </div>
+                    <span class="timeline-date-badge"><i class="far fa-calendar-alt"></i> 2023</span>
+                </div>
+                <ul class="timeline-details-list">
+                    <li>Analyse financière, fiabilisation et traitement des flux de données chiffrées.</li>
+                    <li>Conception et mise à jour de tableaux de bord de pilotage des performances.</li>
+                </ul>
             </div>
 
         </div>
 
-        <!-- EDUCATION -->
-        <h2 class="section-title">EDUCATION</h2>
+        <!-- ========================================================
+             FORMATION (Style Iyad Hadife - Frise Moderne)
+             ======================================================== -->
+        <div class="section-title-wrapper" id="education" style="margin-top: 70px;">
+            <h2>PARCOURS &amp; <span>FORMATION</span></h2>
+        </div>
 
-        <div class="timeline">
+        <div class="timeline-frise">
 
-            <div class="timeline-item">
-                <span class="year">2024 - Present</span>
-                <h4>Ecole Marocaine des Sciences de l'Ingénieur (EMSI)</h4>
-                <p>Cycle Ingénieur – IA & Data Science.</p>
+            <div class="timeline-frise-item">
+                <div class="timeline-frise-dot" style="background:#00e676;box-shadow:0 0 10px #00e676;"></div>
+                <div class="timeline-item-header">
+                    <div>
+                        <span class="status-badge" style="background:rgba(0,230,118,0.12);color:#00e676;border-color:rgba(0,230,118,0.3);">EN COURS</span>
+                        <h4>Cycle d'Ingénieur en IA &amp; Sciences de Données</h4>
+                        <span class="company-name"><i class="fas fa-university"></i> École Marocaine des Sciences de l'Ingénieur (EMSI) &bull; Rabat</span>
+                    </div>
+                    <span class="timeline-date-badge"><i class="far fa-calendar-alt"></i> 2024 – Présent</span>
+                </div>
+                <p>Formation d'excellence axée sur les mathématiques appliquées, l'Intelligence Artificielle, le Machine &amp; Deep Learning, les architectures distribuées Cloud &amp; Big Data.</p>
             </div>
 
-            <div class="timeline-item">
-                <span class="year">2022 - 2024</span>
-                <h4>ISTA – Développement Digital (Full Stack)</h4>
-                <p>Technicienne spécialisée en développement digital.</p>
+            <div class="timeline-frise-item">
+                <div class="timeline-frise-dot"></div>
+                <div class="timeline-item-header">
+                    <div>
+                        <span class="status-badge">DIPLÔME OBTENU</span>
+                        <h4>Technicienne Spécialisée en Développement Digital — Option Full Stack</h4>
+                        <span class="company-name"><i class="fas fa-laptop-code"></i> NTIC / ISTA &bull; Rabat</span>
+                    </div>
+                    <span class="timeline-date-badge"><i class="far fa-calendar-alt"></i> 2020 – 2023</span>
+                </div>
+                <p>Développement d'applications web modernes, bases de données relationnelles et NoSQL, algorithmique avancée, architecture MVC et gestion de projets agiles.</p>
             </div>
 
-            <div class="timeline-item">
-                <span class="year">2020 - 2023</span>
-                <h4>Université Mohammed V – Licence Économie & Gestion</h4>
+            <div class="timeline-frise-item">
+                <div class="timeline-frise-dot"></div>
+                <div class="timeline-item-header">
+                    <div>
+                        <span class="status-badge">LICENCE FONDAMENTALE</span>
+                        <h4>Licence Fondamentale en Économie et Gestion</h4>
+                        <span class="company-name"><i class="fas fa-landmark"></i> Université Mohammed V (UM5) &bull; Rabat</span>
+                    </div>
+                    <span class="timeline-date-badge"><i class="far fa-calendar-alt"></i> 2020 – 2023</span>
+                </div>
+                <p>Double cursus stratégique : modélisation statistique, analyse quantitative, économétrie, gestion d'entreprise et interprétation stratégique de données métier.</p>
+            </div>
+
+            <div class="timeline-frise-item">
+                <div class="timeline-frise-dot"></div>
+                <div class="timeline-item-header">
+                    <div>
+                        <span class="status-badge">BACCALAURÉAT</span>
+                        <h4>Baccalauréat — Sciences Physiques</h4>
+                        <span class="company-name"><i class="fas fa-school"></i> Lycée Moulay Rachid</span>
+                    </div>
+                    <span class="timeline-date-badge"><i class="far fa-calendar-alt"></i> 2020</span>
+                </div>
             </div>
 
         </div>
 
-        <!-- CERTIFICATIONS -->
-        <h2 class="section-title">CERTIFICATIONS</h2>
+        <!-- ========================================================
+             CERTIFICATIONS (Style Iyad Hadife - Grille Moderne)
+             ======================================================== -->
+        <div class="section-title-wrapper" style="margin-top: 70px;">
+            <h2>CERTIFICATIONS <span>OFFICIELLES</span></h2>
+        </div>
 
-        <div class="timeline">
+        <div class="certifications-grid-iyad">
 
-            <div class="timeline-item">
-                <span class="year">2025</span>
-                <h4>Python for Data Science, AI & Development – IBM</h4>
+            <div class="cert-card-iyad">
+                <div class="cert-badge-org">Oracle University</div>
+                <h4>Oracle Cloud Infrastructure Certified AI Foundations Associate</h4>
+                <p class="cert-date">Septembre 2026 – Septembre 2028</p>
+                <span class="cert-id-tag">ID : 103530417OCI26AICFA</span>
             </div>
 
-            <div class="timeline-item">
-                <span class="year">2025</span>
-                <h4>Software Engineering & Project Management – HKUST</h4>
+            <div class="cert-card-iyad">
+                <div class="cert-badge-org">UC San Diego (Coursera)</div>
+                <h4>Introduction to Big Data</h4>
+                <p class="cert-date">Année 2026</p>
+                <a href="https://coursera.org/verify/XU6U5F5Z0IJM" target="_blank" class="cert-verify-link">
+                    <i class="fas fa-external-link-alt"></i> Vérifier le certificat (ID : XU6U5F5Z0IJM)
+                </a>
             </div>
 
-            <div class="timeline-item">
-                <span class="year">2025</span>
-                <h4>La recherche documentaire – Institut Polytechnique de Paris</h4>
+            <div class="cert-card-iyad">
+                <div class="cert-badge-org">Meta (Coursera)</div>
+                <h4>React Basics</h4>
+                <p class="cert-date">Année 2025</p>
+                <a href="https://coursera.org/verify/WYM8U398O5TW" target="_blank" class="cert-verify-link">
+                    <i class="fas fa-external-link-alt"></i> Vérifier le certificat (ID : WYM8U398O5TW)
+                </a>
             </div>
 
-            <div class="timeline-item">
-                <span class="year">2024</span>
-                <h4>Introduction à la programmation orientée objet (C++) – EPFL</h4>
+            <div class="cert-card-iyad">
+                <div class="cert-badge-org">Microsoft (Coursera)</div>
+                <h4>Python Programming Fundamentals</h4>
+                <p class="cert-date">Année 2025</p>
+                <a href="https://coursera.org/verify/08MAYFAL20WZ" target="_blank" class="cert-verify-link">
+                    <i class="fas fa-external-link-alt"></i> Vérifier le certificat (ID : 08MAYFAL20WZ)
+                </a>
             </div>
 
-            <div class="timeline-item">
-                <span class="year">2024</span>
-                <h4>Interactivity with JavaScript – University of Michigan</h4>
+            <div class="cert-card-iyad">
+                <div class="cert-badge-org">IBM</div>
+                <h4>Python for Data Science, AI &amp; Development</h4>
+                <p class="cert-date">Année 2025</p>
             </div>
 
-            <div class="timeline-item">
-                <span class="year">2024</span>
-                <h4>The Unix Workbench – Johns Hopkins University</h4>
+            <div class="cert-card-iyad">
+                <div class="cert-badge-org">HKUST</div>
+                <h4>Software Engineering &amp; Project Management</h4>
+                <p class="cert-date">Année 2025</p>
+            </div>
+
+            <div class="cert-card-iyad">
+                <div class="cert-badge-org">Institut Polytechnique de Paris</div>
+                <h4>La recherche documentaire</h4>
+                <p class="cert-date">Année 2025</p>
+            </div>
+
+            <div class="cert-card-iyad">
+                <div class="cert-badge-org">EPFL</div>
+                <h4>Introduction à la programmation orientée objet (C++)</h4>
+                <p class="cert-date">Année 2024</p>
+            </div>
+
+            <div class="cert-card-iyad">
+                <div class="cert-badge-org">University of Michigan</div>
+                <h4>Interactivity with JavaScript</h4>
+                <p class="cert-date">Année 2024</p>
+            </div>
+
+            <div class="cert-card-iyad">
+                <div class="cert-badge-org">Johns Hopkins University</div>
+                <h4>The Unix Workbench</h4>
+                <p class="cert-date">Année 2024</p>
             </div>
 
         </div>
@@ -274,5 +494,6 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 </script>
 
+<script src="chatbot.js"></script>
 </body>
 </html>
