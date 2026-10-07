@@ -1,189 +1,448 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" data-theme="dark">
 <head>
-
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Projects | Hafsa Housni</title>
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Projets | Hafsa Housni</title>
 <link rel="stylesheet" href="style.css">
-
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
+<link rel="stylesheet" href="chatbot.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<script>
+  (function () {
+    var theme;
+    try { theme = localStorage.getItem('portfolio-theme'); } catch (e) { theme = null; }
+    if (theme !== 'light' && theme !== 'dark') {
+      theme = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'dark';
+    }
+    document.documentElement.setAttribute('data-theme', theme);
+  })();
+</script>
 </head>
 
 <body>
+<div id="root">
+    <div class="app-layout">
 
-<div class="curtain"></div>
+        <!-- TOP NAVBAR (Style Exact Iyad Hadife) -->
+        <nav class="top-navbar" id="topNavbar">
+            <a href="index.html#home" class="nav-brand-mobile">Portfolio</a>
+            <div class="nav-backdrop" id="navBackdrop" aria-hidden="true"></div>
+            
+            <div class="nav-links-container" id="navLinksContainer">
+                <a href="index.html#home" class="nav-link">
+                    <span class="nav-link-icon" aria-hidden="true">⌂</span>
+                    <span class="nav-link-label">Accueil</span>
+                </a>
+                <a href="index.html#experience" class="nav-link">
+                    <span class="nav-link-icon" aria-hidden="true">💼</span>
+                    <span class="nav-link-label">Expérience</span>
+                </a>
+                <a href="index.html#education" class="nav-link">
+                    <span class="nav-link-icon" aria-hidden="true">🎓</span>
+                    <span class="nav-link-label">Formation</span>
+                </a>
+                <a href="index.html#skills" class="nav-link">
+                    <span class="nav-link-icon" aria-hidden="true">⚙</span>
+                    <span class="nav-link-label">Compétences</span>
+                </a>
+                <a href="projects.html" class="nav-link active">
+                    <span class="nav-link-icon" aria-hidden="true">📁</span>
+                    <span class="nav-link-label">Projets</span>
+                </a>
+                <a href="contact.html" class="nav-link">
+                    <span class="nav-link-icon" aria-hidden="true">✉</span>
+                    <span class="nav-link-label">Contact</span>
+                </a>
+                <span class="nav-swipe-hint" aria-hidden="true">Glisser pour fermer</span>
+            </div>
 
-<section class="projects-page">
+            <div class="nav-actions">
+                <a href="Hafsa_Housni_CV.pdf" download class="nav-link" style="border: 1px solid var(--border-light); padding: 5px 12px; border-radius: 18px; font-size: 0.85rem; font-weight: 600;">
+                    <i class="fas fa-download" style="margin-right: 4px;"></i> CV
+                </a>
 
-<div class="side-icons">
+                <!-- THEME TOGGLE -->
+                <button type="button" class="theme-toggle dark" id="themeToggleBtn" title="Changer de thème" aria-label="Changer de thème">
+                    <div class="theme-toggle-track">
+                        <div class="theme-toggle-thumb">
+                            <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="5"></circle>
+                                <line x1="12" y1="1" x2="12" y2="3"></line>
+                                <line x1="12" y1="21" x2="12" y2="23"></line>
+                                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                                <line x1="1" y1="12" x2="3" y2="12"></line>
+                                <line x1="21" y1="12" x2="23" y2="12"></line>
+                                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                            </svg>
+                            <svg class="icon-moon" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                            </svg>
+                        </div>
+                    </div>
+                </button>
 
-<a href="index.html" class="icon link-transition">
-<i class="fas fa-home"></i>
-<span>HOME</span>
-</a>
+                <button class="hamburger-btn" id="hamburgerBtn" title="Menu" aria-label="Menu" aria-expanded="false">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
 
-<a href="about.html" class="icon link-transition">
-<i class="fas fa-user"></i>
-<span>ABOUT</span>
-</a>
+            <div class="scroll-progress" id="scrollProgressBar" aria-hidden="true"></div>
+        </nav>
 
-<a href="projects.html" class="icon">
-<i class="fas fa-briefcase"></i>
-<span>PROJECTS</span>
-</a>
+        <!-- MAIN CONTENT (Style Exact Iyad Hadife /projects) -->
+        <main class="main-content">
+            <div class="projects-page">
 
-<a href="contact.html" class="icon link-transition">
-<i class="fas fa-envelope"></i>
-<span>CONTACT</span>
-</a>
+                <div class="projects-header">
+                    <div class="header-title-flex">
+                        <h2>Mes Projets</h2>
+                    </div>
+                    <span class="project-count" id="projectCount">12 Projets</span>
+                </div>
 
+                <!-- GRILLE DE PROJETS (Classes Exactes: .project-card, .card-content, .card-top-row, etc.) -->
+                <div class="projects-grid">
+
+                    <!-- PROJET 1 -->
+                    <a href="https://github.com/HafsaHousni" target="_blank" rel="noopener noreferrer" class="project-card">
+                        <div class="card-content">
+                            <div class="card-top-row">
+                                <span class="project-category">IA &amp; COMPUTER VISION</span>
+                            </div>
+                            <h3>Détection &amp; Comptage de Véhicules</h3>
+                            <span class="project-experience-badge">💼 Deep Learning &bull; YOLOv8</span>
+                            <p>Système haute performance de vision par ordinateur pour la surveillance routière et l'estimation du trafic avec YOLOv8 et DeepSORT.</p>
+                            <div class="tech-stack">
+                                <span class="tech-pill">YOLOv8</span>
+                                <span class="tech-pill">OpenCV</span>
+                                <span class="tech-pill">DeepSORT</span>
+                                <span class="tech-pill">PyTorch</span>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <span class="view-details-text">Voir le projet →</span>
+                        </div>
+                    </a>
+
+                    <!-- PROJET 2 -->
+                    <a href="https://github.com/HafsaHousni" target="_blank" rel="noopener noreferrer" class="project-card">
+                        <div class="card-content">
+                            <div class="card-top-row">
+                                <span class="project-category">LLM &amp; AGENTS CONVERSATIONNELS</span>
+                            </div>
+                            <h3>Chatbot RAG Intelligent sur CV</h3>
+                            <span class="project-experience-badge">💼 GenAI &bull; Retrieval-Augmented</span>
+                            <p>Architecture RAG alimentée par Google Gemini et index vectoriel FAISS pour interroger dynamiquement un profil professionnel sans hallucination.</p>
+                            <div class="tech-stack">
+                                <span class="tech-pill">LangChain</span>
+                                <span class="tech-pill">Gemini AI</span>
+                                <span class="tech-pill">FAISS</span>
+                                <span class="tech-pill">Streamlit</span>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <span class="view-details-text">Voir le projet →</span>
+                        </div>
+                    </a>
+
+                    <!-- PROJET 3 -->
+                    <a href="https://github.com/HafsaHousni" target="_blank" rel="noopener noreferrer" class="project-card">
+                        <div class="card-content">
+                            <div class="card-top-row">
+                                <span class="project-category">DATA ENGINEERING &amp; ETL</span>
+                            </div>
+                            <h3>Pipeline ETL Médaillon — Données Crypto</h3>
+                            <span class="project-experience-badge">💼 Big Data &bull; Orchestration Airflow</span>
+                            <p>Pipeline de données automatisé basé sur l'architecture Médaillon (Bronze, Silver, Gold) orchestré sous Apache Airflow avec Docker et PostgreSQL.</p>
+                            <div class="tech-stack">
+                                <span class="tech-pill">Apache Airflow</span>
+                                <span class="tech-pill">Docker</span>
+                                <span class="tech-pill">PostgreSQL</span>
+                                <span class="tech-pill">Pandas</span>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <span class="view-details-text">Voir le projet →</span>
+                        </div>
+                    </a>
+
+                    <!-- PROJET 4 -->
+                    <a href="https://github.com/HafsaHousni" target="_blank" rel="noopener noreferrer" class="project-card">
+                        <div class="card-content">
+                            <div class="card-top-row">
+                                <span class="project-category">IA &amp; AUTOMATISATION</span>
+                            </div>
+                            <h3>Système Multi-Agents OpenClaw</h3>
+                            <span class="project-experience-badge">💼 Consult IT &bull; 7 Agents Déployés</span>
+                            <p>Orchestration de flux métiers complexes, traitement intelligent de courriers, synchronisation CRM Jupiter et notifications WhatsApp API.</p>
+                            <div class="tech-stack">
+                                <span class="tech-pill">OpenClaw</span>
+                                <span class="tech-pill">Multi-Agents</span>
+                                <span class="tech-pill">Webhooks</span>
+                                <span class="tech-pill">WhatsApp API</span>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <span class="view-details-text">Voir le projet →</span>
+                        </div>
+                    </a>
+
+                    <!-- PROJET 5 -->
+                    <a href="https://github.com/HafsaHousni" target="_blank" rel="noopener noreferrer" class="project-card">
+                        <div class="card-content">
+                            <div class="card-top-row">
+                                <span class="project-category">DEEP LEARNING MÉDICAL</span>
+                            </div>
+                            <h3>Classification de Pneumonie par Radiographies</h3>
+                            <span class="project-experience-badge">💼 Imagerie Médicale &bull; CNN</span>
+                            <p>Réseaux de neurones convolutifs (CNN, AlexNet, ResNet) entraînés sur images thoraciques avec régularisation avancée et explicabilité.</p>
+                            <div class="tech-stack">
+                                <span class="tech-pill">TensorFlow</span>
+                                <span class="tech-pill">Keras</span>
+                                <span class="tech-pill">CNN</span>
+                                <span class="tech-pill">Matplotlib</span>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <span class="view-details-text">Voir le projet →</span>
+                        </div>
+                    </a>
+
+                    <!-- PROJET 6 -->
+                    <a href="https://github.com/HafsaHousni" target="_blank" rel="noopener noreferrer" class="project-card">
+                        <div class="card-content">
+                            <div class="card-top-row">
+                                <span class="project-category">DATA SCIENCE &amp; ANALYTICS</span>
+                            </div>
+                            <h3>Dashboard BI &amp; Suivi de Performance</h3>
+                            <span class="project-experience-badge">💼 Business Intelligence &bull; Power BI</span>
+                            <p>Tableaux de bord analytiques interactifs sous Power BI avec modélisation DAX en étoile, suivi des KPI financiers et analyses de rentabilité.</p>
+                            <div class="tech-stack">
+                                <span class="tech-pill">Power BI</span>
+                                <span class="tech-pill">DAX</span>
+                                <span class="tech-pill">Modélisation Étoile</span>
+                                <span class="tech-pill">Excel</span>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <span class="view-details-text">Voir le projet →</span>
+                        </div>
+                    </a>
+
+                    <!-- PROJET 7 -->
+                    <a href="https://github.com/HafsaHousni" target="_blank" rel="noopener noreferrer" class="project-card">
+                        <div class="card-content">
+                            <div class="card-top-row">
+                                <span class="project-category">APPLICATION WEB &amp; DATA</span>
+                            </div>
+                            <h3>Plateforme de Gestion RH en Entreprise</h3>
+                            <span class="project-experience-badge">💼 GO&amp;DEV &bull; Stage Ingénierie</span>
+                            <p>Application complète sous Django avec base de données relationnelle MySQL, contrôle d'accès basé sur les rôles (RBAC) et tableau de bord.</p>
+                            <div class="tech-stack">
+                                <span class="tech-pill">Django</span>
+                                <span class="tech-pill">Python</span>
+                                <span class="tech-pill">MySQL</span>
+                                <span class="tech-pill">Bootstrap</span>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <span class="view-details-text">Voir le projet →</span>
+                        </div>
+                    </a>
+
+                    <!-- PROJET 8 -->
+                    <a href="https://github.com/HafsaHousni" target="_blank" rel="noopener noreferrer" class="project-card">
+                        <div class="card-content">
+                            <div class="card-top-row">
+                                <span class="project-category">DATA SCRAPING &amp; AUTOMATISATION</span>
+                            </div>
+                            <h3>Extension Web d'Extraction de Données</h3>
+                            <span class="project-experience-badge">💼 GO&amp;DEV &bull; Stage Technique</span>
+                            <p>Module d'extraction automatisée d'informations web, modélisation UML, backend Laravel/PHP et interfaces réactives.</p>
+                            <div class="tech-stack">
+                                <span class="tech-pill">Laravel</span>
+                                <span class="tech-pill">PHP</span>
+                                <span class="tech-pill">Web Scraping</span>
+                                <span class="tech-pill">JavaScript</span>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <span class="view-details-text">Voir le projet →</span>
+                        </div>
+                    </a>
+
+                    <!-- PROJET 9 -->
+                    <a href="https://github.com/HafsaHousni" target="_blank" rel="noopener noreferrer" class="project-card">
+                        <div class="card-content">
+                            <div class="card-top-row">
+                                <span class="project-category">NLP &amp; MACHINE LEARNING</span>
+                            </div>
+                            <h3>Analyse de Sentiments &amp; Classification de Textes</h3>
+                            <span class="project-experience-badge">💼 Traitement Automatique du Langage</span>
+                            <p>Pipeline NLP complet avec vectorisation TF-IDF, classification supervisée et évaluation comparative sur corpus d'avis clients.</p>
+                            <div class="tech-stack">
+                                <span class="tech-pill">Scikit-learn</span>
+                                <span class="tech-pill">NLTK</span>
+                                <span class="tech-pill">TF-IDF</span>
+                                <span class="tech-pill">Python</span>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <span class="view-details-text">Voir le projet →</span>
+                        </div>
+                    </a>
+
+                    <!-- PROJET 10 -->
+                    <a href="https://github.com/HafsaHousni" target="_blank" rel="noopener noreferrer" class="project-card">
+                        <div class="card-content">
+                            <div class="card-top-row">
+                                <span class="project-category">CLOUD &amp; IA</span>
+                            </div>
+                            <h3>Architecture IA sur Oracle Cloud Infrastructure</h3>
+                            <span class="project-experience-badge">💼 Certification Oracle AI Associate</span>
+                            <p>Déploiement de services d'intelligence artificielle, compute instances et stockage d'objets sur l'infrastructure Cloud Oracle.</p>
+                            <div class="tech-stack">
+                                <span class="tech-pill">OCI Cloud</span>
+                                <span class="tech-pill">AI Foundations</span>
+                                <span class="tech-pill">Cloud Compute</span>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <span class="view-details-text">Voir le projet →</span>
+                        </div>
+                    </a>
+
+                    <!-- PROJET 11 -->
+                    <a href="https://github.com/HafsaHousni" target="_blank" rel="noopener noreferrer" class="project-card">
+                        <div class="card-content">
+                            <div class="card-top-row">
+                                <span class="project-category">DEVELOPPEMENT FRONTEND</span>
+                            </div>
+                            <h3>Application Interactive React</h3>
+                            <span class="project-experience-badge">💼 Meta Certification Project</span>
+                            <p>Interface utilisateur réactive moderne avec gestion d'état, hooks personnalisés et intégration d'APIs REST asynchrones.</p>
+                            <div class="tech-stack">
+                                <span class="tech-pill">React</span>
+                                <span class="tech-pill">JavaScript ES6</span>
+                                <span class="tech-pill">CSS Modules</span>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <span class="view-details-text">Voir le projet →</span>
+                        </div>
+                    </a>
+
+                    <!-- PROJET 12 -->
+                    <a href="https://github.com/HafsaHousni" target="_blank" rel="noopener noreferrer" class="project-card">
+                        <div class="card-content">
+                            <div class="card-top-row">
+                                <span class="project-category">FINANCE &amp; CONTROLE DE GESTION</span>
+                            </div>
+                            <h3>Modélisation &amp; Analyse Financière AXA</h3>
+                            <span class="project-experience-badge">💼 AXA Assurance &bull; Stage Gestion</span>
+                            <p>Traitement et consolidation de flux financiers, modélisation de tendances et création de rapports de gestion opérationnels.</p>
+                            <div class="tech-stack">
+                                <span class="tech-pill">Analyse Financière</span>
+                                <span class="tech-pill">Excel Avancé</span>
+                                <span class="tech-pill">Statistiques</span>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <span class="view-details-text">Voir le projet →</span>
+                        </div>
+                    </a>
+
+                </div>
+            </div>
+        </main>
+
+        <button class="scroll-to-top-btn" id="scrollToTopBtn" title="Retour en haut" aria-label="Retour en haut">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M12 19V5M5 12l7-7 7 7"></path>
+            </svg>
+        </button>
+
+    </div>
 </div>
-
-<div class="projects-container">
-
-<h1 class="projects-title">
-MY <span>PROJECTS</span>
-</h1>
-
-<div class="projects-grid">
-
-<!-- PROJECT 1 -->
-<a href="https://github.com/HafsaHousni/Restaurant-Reservation-App"
-target="_blank"
-class="project-card">
-
-<div class="project-overlay">
-<h3>Event & Reservation App</h3>
-<p>Laravel | MySQL</p>
-</div>
-
-</a>
-
-<!-- PROJECT 2 -->
-<a href="https://github.com/HafsaHousni/Restaurant-Reservation-App"
-target="_blank"
-class="project-card">
-
-<div class="project-overlay">
-<h3>Restaurant Reservation App</h3>
-<p>React | TypeScript | MongoDB</p>
-</div>
-
-</a>
-
-<!-- PROJECT 3 -->
-<a href="https://github.com/HafsaHousni/gestion_photos_django"
-target="_blank"
-class="project-card">
-
-<div class="project-overlay">
-<h3>Photo Management App</h3>
-<p>Django | Python</p>
-</div>
-
-</a>
-
-<!-- PROJECT 4 -->
-<a href="https://github.com/HafsaHousni/Plagiarism-Paraphrase-Detection"
-target="_blank"
-class="project-card">
-
-<div class="project-overlay">
-<h3>Plagiarism Detection</h3>
-<p>Python | NLP</p>
-</div>
-
-</a>
-
-<!-- PROJECT 5 -->
-<a href="https://github.com/HafsaHousni/car_maching_learning_IA"
-target="_blank"
-class="project-card">
-
-<div class="project-overlay">
-<h3>Car Price Prediction</h3>
-<p>Machine Learning</p>
-</div>
-
-</a>
-
-<!-- PROJECT 6 -->
-<a href="https://github.com/HafsaHousni/parapharmacie-"
-target="_blank"
-class="project-card">
-
-<div class="project-overlay">
-<h3>Parapharmacy App</h3>
-<p>C# | .NET</p>
-</div>
-
-</a>
-
-<!-- PROJECT 7 -->
-<a href="https://github.com/HafsaHousni/Device-Repair-App"
-target="_blank"
-class="project-card">
-
-<div class="project-overlay">
-<h3>Device Repair App</h3>
-<p>JAVA</p>
-</div>
-
-</a>
-
-<!-- PROJECT 8 -->
-<a href="https://github.com/HafsaHousni"
-target="_blank"
-class="project-card">
-
-<div class="project-overlay">
-<h3>Image Detection AI</h3>
-<p>Django | Machine Learning</p>
-</div>
-
-</a>
-
-</div>
-</div>
-
-</section>
 
 <script>
+document.addEventListener("DOMContentLoaded", function () {
 
-document.addEventListener("DOMContentLoaded",function(){
+    // --- THEME SWITCHER ---
+    const themeToggleBtn = document.getElementById("themeToggleBtn");
+    function toggleTheme() {
+        const currentTheme = document.documentElement.getAttribute("data-theme") || "dark";
+        const newTheme = currentTheme === "dark" ? "light" : "dark";
+        document.documentElement.classList.add("theme-switching");
+        document.documentElement.setAttribute("data-theme", newTheme);
+        try { localStorage.setItem("portfolio-theme", newTheme); } catch(e) {}
+        if (themeToggleBtn) themeToggleBtn.className = "theme-toggle " + newTheme;
+        setTimeout(() => { document.documentElement.classList.remove("theme-switching"); }, 400);
+    }
+    if (themeToggleBtn) themeToggleBtn.addEventListener("click", toggleTheme);
 
-const curtain=document.querySelector(".curtain")
+    // --- SCROLL PROGRESS ---
+    const scrollBar = document.getElementById("scrollProgressBar");
+    function updateScrollProgress() {
+        const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const progress = totalHeight > 0 ? Math.min(window.scrollY / totalHeight, 1) : 0;
+        if (scrollBar) scrollBar.style.transform = `scaleX(${progress})`;
+    }
+    window.addEventListener("scroll", updateScrollProgress, { passive: true });
+    window.addEventListener("resize", updateScrollProgress);
+    updateScrollProgress();
 
-const links=document.querySelectorAll(".link-transition")
+    // --- SCROLL TO TOP ---
+    const scrollBtn = document.getElementById("scrollToTopBtn");
+    window.addEventListener("scroll", function () {
+        if (scrollBtn) {
+            scrollBtn.style.display = window.scrollY > 300 ? "flex" : "none";
+        }
+    }, { passive: true });
+    if (scrollBtn) {
+        scrollBtn.addEventListener("click", function () {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+    }
 
-links.forEach(link=>{
+    // --- HAMBURGER ---
+    const hamburgerBtn = document.getElementById("hamburgerBtn");
+    const navDrawer = document.getElementById("navLinksContainer");
+    const navBackdrop = document.getElementById("navBackdrop");
 
-link.addEventListener("click",function(e){
+    function toggleNav() {
+        const isOpen = hamburgerBtn.classList.contains("open");
+        if (isOpen) {
+            hamburgerBtn.classList.remove("open");
+            hamburgerBtn.setAttribute("aria-expanded", "false");
+            navDrawer.classList.remove("open");
+            navBackdrop.classList.remove("open");
+            document.body.style.overflow = "";
+        } else {
+            hamburgerBtn.classList.add("open");
+            hamburgerBtn.setAttribute("aria-expanded", "true");
+            navDrawer.classList.add("open");
+            navBackdrop.classList.add("open");
+            document.body.style.overflow = "hidden";
+        }
+    }
 
-e.preventDefault()
+    function closeNav() {
+        hamburgerBtn.classList.remove("open");
+        hamburgerBtn.setAttribute("aria-expanded", "false");
+        navDrawer.classList.remove("open");
+        navBackdrop.classList.remove("open");
+        document.body.style.overflow = "";
+    }
 
-const target=this.href
+    if (hamburgerBtn) hamburgerBtn.addEventListener("click", toggleNav);
+    if (navBackdrop) navBackdrop.addEventListener("click", closeNav);
 
-curtain.classList.add("active")
-
-setTimeout(()=>{
-
-window.location.href=target
-
-},700)
-
-})
-
-})
-
-})
-
+});
 </script>
 
+<script src="chatbot.js"></script>
 </body>
 </html>

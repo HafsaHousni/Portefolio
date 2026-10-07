@@ -1,105 +1,527 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" data-theme="dark">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Hafsa Housni | Portfolio</title>
 <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="chatbot.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<script>
+  (function () {
+    var theme;
+    try { theme = localStorage.getItem('portfolio-theme'); } catch (e) { theme = null; }
+    if (theme !== 'light' && theme !== 'dark') {
+      theme = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'dark';
+    }
+    document.documentElement.setAttribute('data-theme', theme);
+  })();
+</script>
 </head>
 
 <body>
+<div id="root">
+    <div class="app-layout">
 
-<!-- RIDEAU -->
-<div class="curtain"></div>
+        <!-- TOP NAVBAR (Style Exact Iyad Hadife) -->
+        <nav class="top-navbar" id="topNavbar">
+            <a href="#home" class="nav-brand-mobile">Portfolio</a>
+            <div class="nav-backdrop" id="navBackdrop" aria-hidden="true"></div>
+            
+            <div class="nav-links-container" id="navLinksContainer">
+                <a href="#home" class="nav-link active" data-nav="home">
+                    <span class="nav-link-icon" aria-hidden="true">⌂</span>
+                    <span class="nav-link-label">Accueil</span>
+                </a>
+                <a href="#experience" class="nav-link" data-nav="experience">
+                    <span class="nav-link-icon" aria-hidden="true">💼</span>
+                    <span class="nav-link-label">Expérience</span>
+                </a>
+                <a href="#education" class="nav-link" data-nav="education">
+                    <span class="nav-link-icon" aria-hidden="true">🎓</span>
+                    <span class="nav-link-label">Formation</span>
+                </a>
+                <a href="#skills" class="nav-link" data-nav="skills">
+                    <span class="nav-link-icon" aria-hidden="true">⚙</span>
+                    <span class="nav-link-label">Compétences</span>
+                </a>
+                <a href="projects.html" class="nav-link" data-nav="projects">
+                    <span class="nav-link-icon" aria-hidden="true">📁</span>
+                    <span class="nav-link-label">Projets</span>
+                </a>
+                <a href="contact.html" class="nav-link" data-nav="contact">
+                    <span class="nav-link-icon" aria-hidden="true">✉</span>
+                    <span class="nav-link-label">Contact</span>
+                </a>
+                <span class="nav-swipe-hint" aria-hidden="true">Glisser pour fermer</span>
+            </div>
 
-<section class="hero">
+            <div class="nav-actions">
+                <a href="Hafsa_Housni_CV.pdf" download class="nav-link" style="border: 1px solid var(--border-light); padding: 5px 12px; border-radius: 18px; font-size: 0.85rem; font-weight: 600;">
+                    <i class="fas fa-download" style="margin-right: 4px;"></i> CV
+                </a>
 
-    <!-- SIDE ICONS -->
-    <div class="side-icons">
+                <!-- THEME TOGGLE (Sun / Moon) -->
+                <button type="button" class="theme-toggle dark" id="themeToggleBtn" title="Changer de thème" aria-label="Changer de thème">
+                    <div class="theme-toggle-track">
+                        <div class="theme-toggle-thumb">
+                            <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="5"></circle>
+                                <line x1="12" y1="1" x2="12" y2="3"></line>
+                                <line x1="12" y1="21" x2="12" y2="23"></line>
+                                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                                <line x1="1" y1="12" x2="3" y2="12"></line>
+                                <line x1="21" y1="12" x2="23" y2="12"></line>
+                                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                            </svg>
+                            <svg class="icon-moon" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                            </svg>
+                        </div>
+                    </div>
+                </button>
 
-        <a href="index.html" class="icon">
-            <i class="fas fa-home"></i>
-            <span>HOME</span>
-        </a>
+                <!-- HAMBURGER BUTTON -->
+                <button class="hamburger-btn" id="hamburgerBtn" title="Menu" aria-label="Menu" aria-expanded="false">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
 
-        <a href="about.html" class="icon link-transition">
-            <i class="fas fa-user"></i>
-            <span>ABOUT</span>
-        </a>
+            <!-- SCROLL PROGRESS BAR -->
+            <div class="scroll-progress" id="scrollProgressBar" aria-hidden="true"></div>
+        </nav>
 
-        <a href="projects.html" class="icon">
-            <i class="fas fa-briefcase"></i>
-            <span>PROJECTS</span>
-        </a>
+        <!-- MAIN CONTENT (Style Exact Iyad Hadife) -->
+        <main class="main-content">
+            <div class="about-container" id="home">
 
-        <a href="contact.html" class="icon">
-            <i class="fas fa-envelope"></i>
-            <span>CONTACT</span>
-        </a>
+                <!-- ==========================================
+                     PROFILE HEADER
+                     ========================================== -->
+                <section class="profile-header">
+                    <div class="profile-image-container">
+                        <img src="c.jpg" alt="Hafsa Housni" class="profile-image">
+                    </div>
+                    <div class="profile-info">
+                        <h1>
+                            <span class="first-name">HAFSA</span>
+                            <br>
+                            <span class="last-name">HOUSNI</span>
+                        </h1>
+                        <div class="profile-text">
+                            <p>
+                                Future Ingénieure en <strong>Intelligence Artificielle &amp; Data Science</strong> diplômée de l'<strong>EMSI Rabat</strong>.
+                            </p>
+                            <p>
+                                Passionnée par l'innovation technologique et l'automatisation cognitive, je combine de solides compétences théoriques et pratiques en 
+                                <strong>Machine Learning</strong>, <strong>Deep Learning (Vision par ordinateur &amp; NLP)</strong>, 
+                                <strong>Systèmes Multi-Agents (LangGraph, OpenClaw)</strong> et <strong>Pipelines de données distribués (Airflow, Architecture Médaillon, Power BI)</strong>.
+                            </p>
+                            <p>
+                                Forte d'une double compétence technique (Cycle Ingénieur &amp; Dév. Full Stack) et stratégique (Licence en Économie-Gestion), 
+                                je conçois des solutions performantes, évolutives et directement orientées vers la création de valeur métier.
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <div class="main-content-grid">
+
+                    <!-- ==========================================
+                         EXPÉRIENCE PROFESSIONNELLE
+                         ========================================== -->
+                    <section class="journey-section" id="experience">
+                        <div class="section-title-wrapper">
+                            <h2>Expérience</h2>
+                            <div class="section-header-actions">
+                                <button class="fullscreen-toggle-btn" id="fsExpBtn">Plein écran</button>
+                            </div>
+                        </div>
+
+                        <div class="timeline-frise">
+
+                            <!-- Expérience 1 -->
+                            <div class="timeline-frise-item zoom-timeline-card">
+                                <div class="timeline-frise-dot" data-status="Current"></div>
+                                <div class="timeline-frise-content">
+                                    <div class="journey-header-flex">
+                                        <span class="status-badge">Stage PFA / En cours</span>
+                                    </div>
+                                    <span class="timeline-date-badge">Juillet 2026 – Août 2026</span>
+                                    <h4>Ingénieure en Intelligence Artificielle &amp; Data Science <span class="company-name">@ Consult IT &bull; Rabat</span></h4>
+                                    <p>Stage de fin d'année d'ingénieur centré sur l'automatisation intelligente et l'intégration de systèmes agentiques :
+• Conception et déploiement de 7 agents d'automatisation sur la plateforme OpenClaw pour orchestrer des flux métiers complexes.
+• Traitement et classification automatisés des courriers administratifs entrants avec synchronisation directe au CRM Jupiter.
+• Intégration d'APIs REST et développement de notifications événementielles en temps réel via Webhooks et WhatsApp Business API.
+• Sécurisation et robustesse : déduplication intelligente des requêtes, gestion des sessions concurrentes et monitoring d'erreurs.</p>
+                                    <div class="experience-projects">
+                                        <span class="experience-projects-label">Projets liés :</span>
+                                        <a href="projects.html" class="experience-project-link">OpenClaw Multi-Agents →</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Expérience 2 -->
+                            <div class="timeline-frise-item zoom-timeline-card">
+                                <div class="timeline-frise-dot" data-status="Previously"></div>
+                                <div class="timeline-frise-content">
+                                    <div class="journey-header-flex">
+                                        <span class="status-badge">Stage Ingénierie</span>
+                                    </div>
+                                    <span class="timeline-date-badge">Juin 2025 – Août 2025 (3 mois)</span>
+                                    <h4>Stage en ingénierie de développement en IIR <span class="company-name">@ GO&amp;DEV &bull; Rabat</span></h4>
+                                    <p>Conception et développement complet d'une application de gestion des Ressources Humaines (RH).
+• Architecture backend sous Python Django avec base relationnelle MySQL optimisée.
+• Création d'interfaces web ergonomiques et mise en place d'un système sécurisé d'authentification et de gestion des rôles (RBAC).</p>
+                                    <div class="experience-projects">
+                                        <span class="experience-projects-label">Projets liés :</span>
+                                        <a href="projects.html" class="experience-project-link">Plateforme RH Django →</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Expérience 3 -->
+                            <div class="timeline-frise-item zoom-timeline-card">
+                                <div class="timeline-frise-dot" data-status="Previously"></div>
+                                <div class="timeline-frise-content">
+                                    <div class="journey-header-flex">
+                                        <span class="status-badge">Stage Technique</span>
+                                    </div>
+                                    <span class="timeline-date-badge">Avril 2024 – Mai 2024 (2 mois)</span>
+                                    <h4>Technicienne spécialisée en développement <span class="company-name">@ GO&amp;DEV &bull; Rabat</span></h4>
+                                    <p>Conception et développement d'une extension web d'extraction automatique d'informations à partir de sites web ciblés (Web Scraping).
+• Analyse des besoins et modélisation technique UML (diagrammes de cas d'utilisation, séquence, classes).
+• Développement avec HTML, CSS, JavaScript, PHP et framework Laravel.</p>
+                                </div>
+                            </div>
+
+                            <!-- Expérience 4 -->
+                            <div class="timeline-frise-item zoom-timeline-card">
+                                <div class="timeline-frise-dot" data-status="Previously"></div>
+                                <div class="timeline-frise-content">
+                                    <div class="journey-header-flex">
+                                        <span class="status-badge">Stage Gestion</span>
+                                    </div>
+                                    <span class="timeline-date-badge">2023</span>
+                                    <h4>Contrôleur de gestion — Stagiaire <span class="company-name">@ AXA Assurance &bull; Rabat</span></h4>
+                                    <p>Analyse financière, fiabilisation et traitement des flux de données chiffrées.
+• Conception et mise à jour de tableaux de bord de pilotage des performances.</p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </section>
+
+                    <!-- ==========================================
+                         FORMATION ACADÉMIQUE
+                         ========================================== -->
+                    <section class="journey-section" id="education">
+                        <div class="section-title-wrapper">
+                            <h2>Formation</h2>
+                            <div class="section-header-actions">
+                                <button class="fullscreen-toggle-btn" id="fsEduBtn">Plein écran</button>
+                            </div>
+                        </div>
+
+                        <div class="timeline-frise">
+
+                            <!-- Formation 1 -->
+                            <div class="timeline-frise-item zoom-timeline-card">
+                                <div class="timeline-frise-dot" data-status="Current"></div>
+                                <div class="timeline-frise-content">
+                                    <div class="journey-header-flex">
+                                        <span class="status-badge">En cours</span>
+                                    </div>
+                                    <span class="timeline-date-badge">2024 – Présent</span>
+                                    <h4>Cycle d'Ingénieur en IA &amp; Sciences de Données <span class="company-name">@ École Marocaine des Sciences de l'Ingénieur (EMSI) &bull; Rabat</span></h4>
+                                    <p>Formation d'excellence axée sur les mathématiques appliquées, l'Intelligence Artificielle, le Machine &amp; Deep Learning, la vision par ordinateur, le traitement automatique du langage naturel (NLP) et les architectures distribuées Cloud &amp; Big Data.</p>
+                                </div>
+                            </div>
+
+                            <!-- Formation 2 -->
+                            <div class="timeline-frise-item zoom-timeline-card">
+                                <div class="timeline-frise-dot" data-status="Graduated"></div>
+                                <div class="timeline-frise-content">
+                                    <div class="journey-header-flex">
+                                        <span class="status-badge">Diplômée</span>
+                                    </div>
+                                    <span class="timeline-date-badge">2020 – 2023</span>
+                                    <h4>Technicienne Spécialisée en Développement Digital — Option Full Stack <span class="company-name">@ École NTIC / ISTA &bull; Rabat</span></h4>
+                                    <p>Développement d'applications web modernes, bases de données relationnelles et NoSQL, algorithmique avancée, architecture logicielle MVC et gestion agile de projets.</p>
+                                </div>
+                            </div>
+
+                            <!-- Formation 3 -->
+                            <div class="timeline-frise-item zoom-timeline-card">
+                                <div class="timeline-frise-dot" data-status="Graduated"></div>
+                                <div class="timeline-frise-content">
+                                    <div class="journey-header-flex">
+                                        <span class="status-badge">Diplômée</span>
+                                    </div>
+                                    <span class="timeline-date-badge">2020 – 2023</span>
+                                    <h4>Licence Fondamentale en Économie et Gestion <span class="company-name">@ Université Mohammed V (UM5) &bull; Rabat</span></h4>
+                                    <p>Double cursus stratégique : modélisation statistique, économétrie, analyse quantitative, gestion d'entreprise et interprétation stratégique de données métier.</p>
+                                </div>
+                            </div>
+
+                            <!-- Formation 4 -->
+                            <div class="timeline-frise-item zoom-timeline-card">
+                                <div class="timeline-frise-dot" data-status="Graduated"></div>
+                                <div class="timeline-frise-content">
+                                    <div class="journey-header-flex">
+                                        <span class="status-badge">Diplômée</span>
+                                    </div>
+                                    <span class="timeline-date-badge">2020</span>
+                                    <h4>Baccalauréat — Sciences Physiques <span class="company-name">@ Lycée Hassan II / Moulay Rachid</span></h4>
+                                    <p>Série Sciences Expérimentales.</p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </section>
+
+                    <!-- ==========================================
+                         COMPÉTENCES TECHNIQUES
+                         ========================================== -->
+                    <section class="skills-section" id="skills">
+                        <div class="section-title-wrapper">
+                            <h2>Compétences</h2>
+                            <div class="section-header-actions">
+                                <button class="fullscreen-toggle-btn" id="fsSkillsBtn">Plein écran</button>
+                            </div>
+                        </div>
+
+                        <div class="skills-grid">
+
+                            <!-- Catégorie 1 -->
+                            <div class="skill-category zoom-card">
+                                <div class="category-header-flex">
+                                    <h3>Intelligence Artificielle &amp; Deep Learning</h3>
+                                </div>
+                                <div class="pills-container">
+                                    <span class="skill-pill-editable zoom-pill">Python (Expert)</span>
+                                    <span class="skill-pill-editable zoom-pill">Machine Learning</span>
+                                    <span class="skill-pill-editable zoom-pill">Deep Learning (CNN)</span>
+                                    <span class="skill-pill-editable zoom-pill">TensorFlow / Keras</span>
+                                    <span class="skill-pill-editable zoom-pill">Computer Vision (YOLO, OpenCV)</span>
+                                    <span class="skill-pill-editable zoom-pill">Scikit-learn</span>
+                                    <span class="skill-pill-editable zoom-pill">AlexNet &amp; ResNet</span>
+                                    <span class="skill-pill-editable zoom-pill">Classification &amp; Régression</span>
+                                </div>
+                            </div>
+
+                            <!-- Catégorie 2 -->
+                            <div class="skill-category zoom-card">
+                                <div class="category-header-flex">
+                                    <h3>IA Générative, Systèmes Agents &amp; NLP</h3>
+                                </div>
+                                <div class="pills-container">
+                                    <span class="skill-pill-editable zoom-pill">LLM &amp; Prompt Engineering</span>
+                                    <span class="skill-pill-editable zoom-pill">RAG (Retrieval-Augmented Gen)</span>
+                                    <span class="skill-pill-editable zoom-pill">Systèmes Multi-Agents (LangGraph)</span>
+                                    <span class="skill-pill-editable zoom-pill">LangChain</span>
+                                    <span class="skill-pill-editable zoom-pill">OpenClaw (7 agents déployés)</span>
+                                    <span class="skill-pill-editable zoom-pill">Google Gemini AI</span>
+                                    <span class="skill-pill-editable zoom-pill">ChromaDB &amp; FAISS</span>
+                                    <span class="skill-pill-editable zoom-pill">BERT &amp; NLP (TF-IDF)</span>
+                                </div>
+                            </div>
+
+                            <!-- Catégorie 3 -->
+                            <div class="skill-category zoom-card">
+                                <div class="category-header-flex">
+                                    <h3>Data Science, Pipelines ETL &amp; BI</h3>
+                                </div>
+                                <div class="pills-container">
+                                    <span class="skill-pill-editable zoom-pill">Apache Airflow</span>
+                                    <span class="skill-pill-editable zoom-pill">Architecture Médaillon (Bronze/Silver/Gold)</span>
+                                    <span class="skill-pill-editable zoom-pill">Docker &amp; Compose</span>
+                                    <span class="skill-pill-editable zoom-pill">Power BI (Dashboards interactifs)</span>
+                                    <span class="skill-pill-editable zoom-pill">Pandas &amp; NumPy</span>
+                                    <span class="skill-pill-editable zoom-pill">Analyse Exploratoire (EDA)</span>
+                                    <span class="skill-pill-editable zoom-pill">Feature Engineering</span>
+                                    <span class="skill-pill-editable zoom-pill">Suivi des KPI Métier</span>
+                                </div>
+                            </div>
+
+                            <!-- Catégorie 4 -->
+                            <div class="skill-category zoom-card">
+                                <div class="category-header-flex">
+                                    <h3>Développement Full Stack &amp; Données</h3>
+                                </div>
+                                <div class="pills-container">
+                                    <span class="skill-pill-editable zoom-pill">Django &amp; Flask</span>
+                                    <span class="skill-pill-editable zoom-pill">APIs REST</span>
+                                    <span class="skill-pill-editable zoom-pill">SQL (MySQL)</span>
+                                    <span class="skill-pill-editable zoom-pill">NoSQL (MongoDB)</span>
+                                    <span class="skill-pill-editable zoom-pill">React &amp; JavaScript</span>
+                                    <span class="skill-pill-editable zoom-pill">Laravel &amp; PHP</span>
+                                    <span class="skill-pill-editable zoom-pill">Git / GitHub</span>
+                                    <span class="skill-pill-editable zoom-pill">Webhooks &amp; WhatsApp API</span>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="view-projects-wrapper" style="margin-top: 40px;">
+                            <a href="projects.html" class="view-projects-btn">Voir tous les projets</a>
+                        </div>
+                    </section>
+
+                </div>
+
+            </div>
+        </main>
+
+        <!-- SCROLL TO TOP BUTTON (Style Iyad Hadife) -->
+        <button class="scroll-to-top-btn" id="scrollToTopBtn" title="Retour en haut" aria-label="Retour en haut">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M12 19V5M5 12l7-7 7 7"></path>
+            </svg>
+        </button>
 
     </div>
+</div>
 
-    <div class="hero-container">
-
-        <div class="hero-image">
-            <img src="image.png" alt="Hafsa Housni">
-        </div>
-
-        <div class="hero-content">
-            <h1>I'M HAFSA HOUSNI.</h1>
-            <h2>AI & Data Engineering Student</h2>
-
-            <p>
-                Passionnée par l'intelligence artificielle et la science des données,
-                je développe des solutions intelligentes et innovantes.
-            </p>
-
-            <a href="about.html" class="btn link-transition">
-                MORE ABOUT ME →
-            </a>
-        </div>
-
-    </div>
-
-</section>
-
+<!-- SCRIPTS D'INTERACTION EXACTS STYLE IYAD HADIFE -->
 <script>
 document.addEventListener("DOMContentLoaded", function () {
 
-    const curtain = document.querySelector(".curtain");
+    // --- THEME SWITCHER (Light / Dark) ---
+    const themeToggleBtn = document.getElementById("themeToggleBtn");
+    function toggleTheme() {
+        const currentTheme = document.documentElement.getAttribute("data-theme") || "dark";
+        const newTheme = currentTheme === "dark" ? "light" : "dark";
+        document.documentElement.classList.add("theme-switching");
+        document.documentElement.setAttribute("data-theme", newTheme);
+        try { localStorage.setItem("portfolio-theme", newTheme); } catch(e) {}
+        if (themeToggleBtn) {
+            themeToggleBtn.className = "theme-toggle " + newTheme;
+        }
+        setTimeout(() => {
+            document.documentElement.classList.remove("theme-switching");
+        }, 400);
+    }
+    if (themeToggleBtn) themeToggleBtn.addEventListener("click", toggleTheme);
 
-    const links = document.querySelectorAll("a");
+    // --- SCROLL PROGRESS BAR ---
+    const scrollBar = document.getElementById("scrollProgressBar");
+    function updateScrollProgress() {
+        const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const progress = totalHeight > 0 ? Math.min(window.scrollY / totalHeight, 1) : 0;
+        if (scrollBar) {
+            scrollBar.style.transform = `scaleX(${progress})`;
+        }
+    }
+    window.addEventListener("scroll", updateScrollProgress, { passive: true });
+    window.addEventListener("resize", updateScrollProgress);
+    updateScrollProgress();
 
-    links.forEach(link => {
-
-        link.addEventListener("click", function (e) {
-
-            const target = this.getAttribute("href");
-
-            // Ignore liens externes (http, https, whatsapp, # etc.)
-            if (
-                target &&
-                !target.startsWith("http") &&
-                !target.startsWith("#") &&
-                !this.hasAttribute("target")
-            ) {
-
-                e.preventDefault();
-
-                curtain.classList.add("active");
-
-                setTimeout(() => {
-                    window.location.href = target;
-                }, 700);
+    // --- SCROLL TO TOP BUTTON ---
+    const scrollBtn = document.getElementById("scrollToTopBtn");
+    window.addEventListener("scroll", function () {
+        if (scrollBtn) {
+            if (window.scrollY > 300) {
+                scrollBtn.style.display = "flex";
+            } else {
+                scrollBtn.style.display = "none";
             }
-
+        }
+    }, { passive: true });
+    if (scrollBtn) {
+        scrollBtn.addEventListener("click", function () {
+            window.scrollTo({ top: 0, behavior: "smooth" });
         });
+    }
 
+    // --- MOBILE HAMBURGER & DRAWER ---
+    const hamburgerBtn = document.getElementById("hamburgerBtn");
+    const navDrawer = document.getElementById("navLinksContainer");
+    const navBackdrop = document.getElementById("navBackdrop");
+
+    function toggleNav() {
+        const isOpen = hamburgerBtn.classList.contains("open");
+        if (isOpen) {
+            hamburgerBtn.classList.remove("open");
+            hamburgerBtn.setAttribute("aria-expanded", "false");
+            navDrawer.classList.remove("open");
+            navBackdrop.classList.remove("open");
+            document.body.style.overflow = "";
+        } else {
+            hamburgerBtn.classList.add("open");
+            hamburgerBtn.setAttribute("aria-expanded", "true");
+            navDrawer.classList.add("open");
+            navBackdrop.classList.add("open");
+            document.body.style.overflow = "hidden";
+        }
+    }
+
+    function closeNav() {
+        hamburgerBtn.classList.remove("open");
+        hamburgerBtn.setAttribute("aria-expanded", "false");
+        navDrawer.classList.remove("open");
+        navBackdrop.classList.remove("open");
+        document.body.style.overflow = "";
+    }
+
+    if (hamburgerBtn) hamburgerBtn.addEventListener("click", toggleNav);
+    if (navBackdrop) navBackdrop.addEventListener("click", closeNav);
+
+    // Close on link click
+    const navLinks = document.querySelectorAll(".nav-links-container .nav-link");
+    navLinks.forEach(link => {
+        link.addEventListener("click", function () {
+            closeNav();
+        });
     });
+
+    // --- SCROLL SPY (Active link update) ---
+    const spySections = ["home", "experience", "education", "skills"];
+    window.addEventListener("scroll", function () {
+        let activeId = "home";
+        for (let id of spySections) {
+            const el = document.getElementById(id);
+            if (el) {
+                const rect = el.getBoundingClientRect();
+                if (rect.top <= window.innerHeight / 3 && rect.bottom >= window.innerHeight / 3) {
+                    activeId = id;
+                }
+            }
+        }
+        navLinks.forEach(link => {
+            const nav = link.getAttribute("data-nav");
+            if (nav === activeId) {
+                link.classList.add("active");
+            } else if (nav !== "projects" && nav !== "contact") {
+                link.classList.remove("active");
+            }
+        });
+    }, { passive: true });
+
+    // --- FULLSCREEN TOGGLES (Expérience, Formation, Compétences) ---
+    function setupFs(btnId, secId, textNormal, textFs) {
+        const btn = document.getElementById(btnId);
+        const sec = document.getElementById(secId);
+        if (btn && sec) {
+            btn.addEventListener("click", function () {
+                const isFs = sec.classList.toggle("fullscreen-overlay-mode");
+                btn.textContent = isFs ? "Réduire" : "Plein écran";
+            });
+        }
+    }
+    setupFs("fsExpBtn", "experience");
+    setupFs("fsEduBtn", "education");
+    setupFs("fsSkillsBtn", "skills");
 
 });
 </script>
+
+<!-- CHATBOT IA -->
+<script src="chatbot.js"></script>
 
 </body>
 </html>
